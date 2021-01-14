@@ -4,4 +4,4 @@ synchronized 和 lock区别
 3.synchronized 会自动释放锁  lock 必须要手动释放锁，如果不释放，死锁
 4.synchronized 可能出现一直等待  lock不一定一直等待
 5.synchronized 可重入锁 不可以中断，非公平  lock 可重入 可以判断锁的状态 非公平
-6.synchronized 适合锁少量的代码同步问题  lock 锁适合大量的同步代码
+6.synchronized 适合锁少量的代码同步问题  lock 锁适合大量的同步代码5
