@@ -1,0 +1,25 @@
+package com.example.demo;
+
+/**
+ * @Description:
+ * @Author: liaocongcong
+ * @Date: 2021/4/11 10:51
+ */
+public class Person {
+    private String name ;
+
+    public Person() {
+    }
+
+    public Person(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}

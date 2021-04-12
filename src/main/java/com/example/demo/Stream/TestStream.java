@@ -2,10 +2,9 @@ package com.example.demo.Stream;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -18,7 +17,19 @@ import java.util.stream.Stream;
 public class TestStream {
 
 
-	public static void main(String[] args) {
+	public static Date getDates(String date) throws ParseException {
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+		Date parse = simpleDateFormat.parse(date);
+		return parse;
+	}
+
+
+	public static void main(String[] args) throws ParseException {
+
+		String dates = "20210323160256";
+		Date datesd=getDates(dates);
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		System.out.println("时间格式为："+simpleDateFormat.format(datesd));
 		List<Integer> list = Arrays.asList(7, 6, 9, 3, 8, 2, 1);
 
 		//遍历出符合条件的元素
@@ -53,14 +64,14 @@ public class TestStream {
     @Test
 	public void testStream(){
 
-		List<Person> personList = new ArrayList<Person>();
+		List<Person> PersonList = new ArrayList<Person>();
 
-		personList.add(new Person("Tom", 8900, 23, "male", "New York"));
-		personList.add(new Person("Jack", 7000, 25, "male", "Washington"));
-		personList.add(new Person("Lily", 7800, 21, "female", "Washington"));
-		personList.add(new Person("Anni", 8200, 24, "female", "New York"));
-		personList.add(new Person("Owen", 9500, 25, "male", "New York"));
-		personList.add(new Person("Alisa", 7900, 26, "female", "New York"));
+		PersonList.add(new Person("Tom", 8900, 23, "male", "New York"));
+		PersonList.add(new Person("Jack", 7000, 25, "male", "Washington"));
+		PersonList.add(new Person("Lily", 7800, 21, "female", "Washington"));
+		PersonList.add(new Person("Anni", 8200, 24, "female", "New York"));
+		PersonList.add(new Person("Owen", 9500, 25, "male", "New York"));
+		PersonList.add(new Person("Alisa", 7900, 26, "female", "New York"));
 
     	Stream<Integer> stream = Stream.of(1,9,3,4,5,6,7);
     	Stream<Integer> stream1 = Stream.iterate(2,(x)->x+3).limit(4);
@@ -71,7 +82,7 @@ public class TestStream {
 
 
     	//筛选出工资高于8000的人，并行成一个新的集合
-		List<String> collect = personList.stream().filter(x -> x.getSalary() > 8000).map(Person::getName).collect(Collectors.toList());
+		List<String> collect = PersonList.stream().filter(x -> x.getSalary() > 8000).map(Person::getName).collect(Collectors.toList());
 
 		System.out.print("高于8000的员工姓名：" + collect);
 
